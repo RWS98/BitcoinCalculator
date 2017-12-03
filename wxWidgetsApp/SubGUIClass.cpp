@@ -20,7 +20,19 @@ void SubGUIClass::onExitSelected( wxCommandEvent& event )
 void SubGUIClass::onResetSelected( wxCommandEvent& event )
 {
 	//event that controls the reset button
-
+	int answer = wxMessageBox("Reset?", "Confirm", wxYES_NO, this);
+	if (answer == wxYES)
+	{
+		boughtBox->Clear();
+		buyPrice->Clear();
+		buyFee->Clear();
+		btcBought->Clear();
+		btcSelling->Clear();
+		sellPrice->Clear();
+		sellFee->Clear();
+		sellBox->Clear();
+		profit->Clear();
+	}
 }
 
 void SubGUIClass::displayStartUp( wxUpdateUIEvent& event )
