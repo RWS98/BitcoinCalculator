@@ -4,7 +4,7 @@ SubGUIClass::SubGUIClass( wxWindow* parent )
 :
 GUIClass( parent )
 {
-
+	statusBar->SetLabel("Donate Bitcoin: 36PicyaWqygQz5sB7ByPF2wcwdGCjydVWk");
 }
 
 void SubGUIClass::performCalculation( wxIdleEvent& event )
