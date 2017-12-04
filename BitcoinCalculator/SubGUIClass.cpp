@@ -16,7 +16,10 @@ void SubGUIClass::performCalculation( wxIdleEvent& event )
 	bought = amount / buyingPrice;
 	bought = bought - (bought * buyingFee);
 
-	output = std::to_string(bought);
+	if (boughtBox->GetValue() == "" || buyPrice->GetValue() == "")
+		output = "";
+	else
+		output = std::to_string(bought);
 
 	btcBought->SetValue(output);
 	btcSelling->SetValue(output);
@@ -27,13 +30,19 @@ void SubGUIClass::performCalculation( wxIdleEvent& event )
 	sold = bought * sellingPrice;
 	sold = sold - (sold * sellingFee);
 
-	total = std::to_string(sold);
+	if (btcSelling->GetValue() == "" || sellPrice->GetValue() == "")
+		total = "";
+	else
+		total = std::to_string(sold);
 
 	sellBox->SetValue(total);
 
 	all = sold - amount;
 
-	profits = std::to_string(all);
+	if (btcBought->GetValue() == "" || sellBox->GetValue() == "")
+		profits = "";
+	else
+		profits = std::to_string(all);
 
 	profit->SetValue(profits);
 }
