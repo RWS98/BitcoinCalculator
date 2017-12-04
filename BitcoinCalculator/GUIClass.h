@@ -64,6 +64,7 @@ class GUIClass : public wxFrame
 		wxStatusBar* statusBar;
 		
 		// Virtual event handlers, overide them in your derived class
+		virtual void performCalculation( wxIdleEvent& event ) { event.Skip(); }
 		virtual void onExitSelected( wxCommandEvent& event ) { event.Skip(); }
 		virtual void onResetSelected( wxCommandEvent& event ) { event.Skip(); }
 		virtual void displayStartUp( wxUpdateUIEvent& event ) { event.Skip(); }
