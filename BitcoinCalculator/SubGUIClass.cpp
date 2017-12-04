@@ -22,7 +22,7 @@ void SubGUIClass::performCalculation( wxIdleEvent& event )
 	btcSelling->SetValue(output);
 
 	sellingPrice = atof(sellPrice->GetValue());
-	sellingFee = atof(buyFee->GetValue()) / 100;
+	sellingFee = atof(sellFee->GetValue()) / 100;
 
 	sold = bought * sellingPrice;
 	sold = sold - (sold * sellingFee);
