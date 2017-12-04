@@ -139,6 +139,7 @@ GUIClass::GUIClass( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	this->Centre( wxBOTH );
 	
 	// Connect Events
+	this->Connect( wxEVT_IDLE, wxIdleEventHandler( GUIClass::performCalculation ) );
 	this->Connect( exitOption->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( GUIClass::onExitSelected ) );
 	resetButton->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( GUIClass::onResetSelected ), NULL, this );
 	exitButton->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( GUIClass::onExitSelected ), NULL, this );
@@ -148,6 +149,7 @@ GUIClass::GUIClass( wxWindow* parent, wxWindowID id, const wxString& title, cons
 GUIClass::~GUIClass()
 {
 	// Disconnect Events
+	this->Disconnect( wxEVT_IDLE, wxIdleEventHandler( GUIClass::performCalculation ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( GUIClass::onExitSelected ) );
 	resetButton->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( GUIClass::onResetSelected ), NULL, this );
 	exitButton->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( GUIClass::onExitSelected ), NULL, this );

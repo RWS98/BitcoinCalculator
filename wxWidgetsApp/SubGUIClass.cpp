@@ -7,6 +7,37 @@ GUIClass( parent )
 
 }
 
+void SubGUIClass::performCalculation( wxIdleEvent& event )
+{
+	amount = atof(boughtBox->GetValue());
+	buyingPrice = atof(buyPrice->GetValue());
+	buyingFee = atof(buyFee->GetValue())/100;
+
+	bought = amount / buyingPrice;
+	bought = bought - (bought * buyingFee);
+
+	output = std::to_string(bought);
+
+	btcBought->SetValue(output);
+	btcSelling->SetValue(output);
+
+	sellingPrice = atof(sellPrice->GetValue());
+	sellingFee = atof(buyFee->GetValue()) / 100;
+
+	sold = bought * sellingPrice;
+	sold = sold - (sold * sellingFee);
+
+	total = std::to_string(sold);
+
+	sellBox->SetValue(total);
+
+	all = sold - amount;
+
+	profits = std::to_string(all);
+
+	profit->SetValue(profits);
+}
+
 void SubGUIClass::onExitSelected( wxCommandEvent& event )
 {
 	//event that controls exit button
